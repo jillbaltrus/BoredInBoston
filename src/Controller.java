@@ -5,16 +5,28 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Controller class to handle user interactions and updates to the model.
+ */
 public class Controller {
 
   private final Scanner scanner;
   private Model model;
 
+  /**
+   * Creates a Controller instance
+   * @param scanner Scanner used to read user input
+   * @param model Reference to the model that holds the business data for this instance
+   */
   public Controller(Scanner scanner, Model model) {
     this.scanner = scanner;
     this.model = model;
   }
 
+  /**
+   * Drives the program by prompting the user, handling the input, updating the model and
+   * reporting the result.
+   */
   public void run() {
     List<String> BusinessTypes = Stream.of(BusinessType.values())
         .map(Enum::toString).collect(Collectors.toList());
@@ -77,6 +89,13 @@ public class Controller {
     scanner.close();
   }
 
+
+  /**
+   * Formats a list of items as a single string to be printed. Also appends an extra item that says
+   * "X. ANY" to the end of the string representation of the list.
+   * @param list the list to be formatted
+   * @return the string representation of the list
+   */
   private String generateList(List list) {
     String result = "";
     //String newline = "";
